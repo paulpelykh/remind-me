@@ -1,3 +1,4 @@
+import CreateCollectionButton from '@/components/CreateCollectionButton';
 import SadFace from '@/components/icons/SadFace';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -56,11 +57,16 @@ async function CollectionList() {
 
   if (collections.length === 0) {
     return (
-      <Alert>
-        <SadFace />
-        <AlertTitle>There are no collections yet!</AlertTitle>
-        <AlertDescription>Create a collection to get started</AlertDescription>
-      </Alert>
+      <div className="flex flex-col gap-5">
+        <Alert>
+          <SadFace />
+          <AlertTitle>There are no collections yet!</AlertTitle>
+          <AlertDescription>
+            Create a collection to get started
+          </AlertDescription>
+        </Alert>
+        <CreateCollectionButton />
+      </div>
     );
   }
 }
