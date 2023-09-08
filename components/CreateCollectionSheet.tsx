@@ -31,6 +31,8 @@ import {
 } from './ui/select';
 import { CollectionColor, CollectionColors } from '@/lib/constans';
 import { cn } from '@/lib/utils';
+import { Separator } from './ui/separator';
+import { Button } from './ui/button';
 
 interface Props {
   open: boolean;
@@ -47,8 +49,13 @@ function CreateCollectionSheet({ open, onOpenChange }: Props) {
     console.log('SUBMITTED', data);
   };
 
+  const openChangeWrapper = (open: boolean) => {
+    form.reset();
+    onOpenChange(open);
+  };
+
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
+    <Sheet open={open} onOpenChange={openChangeWrapper}>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Add new collection</SheetTitle>
@@ -57,7 +64,10 @@ function CreateCollectionSheet({ open, onOpenChange }: Props) {
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 flex flex-col"
+          >
             <FormField
               control={form.control}
               name="name"
@@ -79,8 +89,13 @@ function CreateCollectionSheet({ open, onOpenChange }: Props) {
                 <FormItem>
                   <FormLabel>Color</FormLabel>
                   <FormControl>
-                    <Select>
-                      <SelectTrigger>
+                    <Select onValueChange={color => field.onChange(color)}>
+                      <SelectTrigger
+                        className={cn(
+                          'w-full h-8 text-white',
+                          CollectionColors[field.value as CollectionColor]
+                        )}
+                      >
                         <SelectValue
                           placeholder="Color"
                           className="w-full h-8"
@@ -111,6 +126,18 @@ function CreateCollectionSheet({ open, onOpenChange }: Props) {
             />
           </form>
         </Form>
+        <div>
+          <Separator className="flex flex-col gap-3 mt-4" />
+          <Button
+            className={cn(
+              form.watch('color') &&
+                CollectionColors[form.getValues('color') as CollectionColor]
+            )}
+            onClick={form.handleSubmit(onSubmit)}
+          >
+            Confirm
+          </Button>
+        </div>
       </SheetContent>
     </Sheet>
   );
