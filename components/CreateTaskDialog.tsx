@@ -73,7 +73,6 @@ function CreateTaskDialog({ open, collection, setOpen }: Props) {
         variant: 'destructive',
       });
     }
-    await createTask(data);
   };
 
   return (
