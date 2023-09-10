@@ -59,10 +59,11 @@ function CreateCollectionSheet({ open, onOpenChange }: Props) {
       openChangeWrapper(false);
       router.refresh();
 
-      toast({
-        title: 'Success',
-        description: 'Collection was successfully created ',
-      });
+      // Deleted toast in deploy, because it is bad for ux
+      // toast({
+      //   title: 'Success',
+      //   description: 'Collection was successfully created ',
+      // });
     } catch (e) {
       //Show toast
       toast({

@@ -49,10 +49,11 @@ function CollectionCard({ collection }: Props) {
   const removeCollection = async () => {
     try {
       await deleteCollection(collection.id);
-      toast({
-        title: 'Success',
-        description: 'Collection deleted successfully',
-      });
+      // Deleted toast in deploy, because it is bad for ux
+      // toast({
+      //   title: 'Success',
+      //   description: 'Collection deleted successfully',
+      // });
       router.refresh();
     } catch (e) {
       toast({
