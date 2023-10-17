@@ -1,3 +1,7 @@
+## Web application that allows users to set reminders and create to do lists in a collection with selected deadline
+![image](https://github.com/paulpelykh/remind-me/assets/43278783/0dd2a244-8c6f-4886-b6df-8de62682ff97)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
